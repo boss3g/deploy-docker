@@ -21,7 +21,7 @@ jobs:
     - name: Build and Run with Docker Compose
       run: |
         docker-compose up -d --build
-        docker-compose cp web:/usr/share/nginx/html ./src
+        docker cp $(docker-compose ps -q web):/usr/share/nginx/html ./src
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
