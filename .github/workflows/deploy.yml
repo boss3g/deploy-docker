@@ -19,11 +19,11 @@ jobs:
     - name: Extract built files
       run: |
         docker create --name my-app-container my-app
-        docker cp my-app-container:/usr/share/nginx/html ./public
+        docker cp my-app-container:/usr/share/nginx/html ./src
         docker rm my-app-container
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GH_PAT }}
-        publish_dir: ./public
+        publish_dir: ./src
